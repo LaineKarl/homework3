@@ -1,7 +1,7 @@
 <template>
     <div class="post">
       <h2>
-        <img :src="post.profile_picture || '/images/me.png'" alt="Profile" />
+        <img :src="post.profile_picture || '/images/me.png'" alt="Profile" class="profile-picture" />
         <span>{{ post.created || 'Unknown Date' }}</span>
       </h2>
       <div v-if="post.photo">
@@ -29,11 +29,7 @@
   .like-button {
     cursor: pointer;
   }
-  
-  .post-image {
-    max-width: 100%;
-    height: auto;
-  }
+
   .parent {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
@@ -76,9 +72,15 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
 }
 
-.post img {
+.post-image {
+    width: 100%;
+    height: 100%;
+}
+
+.profile-picture {
     width: 50px;
     height: 50px;
+    border-radius: 8px;
 }
 
 .post h2 {
@@ -91,7 +93,9 @@
 }
 
 .like-button {
-    width: 24px;
+    float: left;
+    margin-right: 10px;
+    width: 50px;
     height: auto;
     cursor: pointer;
     margin-top: 10px;
@@ -104,6 +108,7 @@
 
 div > p {
     font-style: italic;
+    text-align: left;
 }
 
 .post p + p {
