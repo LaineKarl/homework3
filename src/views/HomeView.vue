@@ -1,14 +1,26 @@
 <template>
     <div>
-      <AppHeader />
+      <header>
+        <nav>
+          <AppHeader />
+        </nav>
+      </header>
       <div class="parent">
-        <div class="div2"></div>
-        <div class="div4"></div>
+        <!-- Left Sidebar -->
+        <div class="div2">
+          <p></p>
+        </div>
+  
+        <!-- Main Content (Blog Posts) -->
         <div class="div5">
           <div class="post-list">
-            <!-- Correct the component name to BlogPost -->
             <BlogPost v-for="post in posts" :key="post.id" :post="post" />
           </div>
+        </div>
+  
+        <!-- Right Sidebar -->
+        <div class="div4">
+          <p></p>
         </div>
       </div>
       <AppFooter />
@@ -16,43 +28,84 @@
   </template>
   
   <script>
-  import AppHeader from '@/components/AppHeader.vue';
-  import AppFooter from '@/components/AppFooter.vue';
-  import BlogPost from '@/components/BlogPost.vue'; // Import the BlogPost component
+  import AppHeader from "@/components/AppHeader.vue";
+  import AppFooter from "@/components/AppFooter.vue";
+  import BlogPost from "@/components/BlogPost.vue";
   
   export default {
-    name: 'HomeView',
+    name: "HomeView",
     components: {
       AppHeader,
       AppFooter,
-      BlogPost, // Register the BlogPost component
+      BlogPost,
     },
     data() {
       return {
-        posts: [], // This will store the fetched posts
+        posts: [],
       };
     },
     mounted() {
-      this.fetchPosts(); // Fetch posts when the component is mounted
+      this.fetchPosts();
     },
     methods: {
-        async fetchPosts() {
-  try {
-    const response = await fetch('/data/PostInfo.json'); // Correct path for public folder
-    const posts = await response.json();
-    this.posts = posts; // Set the posts data to Vue's reactive data
-  } catch (error) {
-    console.error('Error fetching posts:', error);
-  }
-}
-
+      async fetchPosts() {
+        try {
+          const response = await fetch("/data/PostInfo.json");
+          this.posts = await response.json();
+        } catch (error) {
+          console.error("Error fetching posts:", error);
+        }
+      },
     },
   };
   </script>
   
   <style scoped>
+  
+  .parent {
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr;
+    grid-template-rows: auto;
+    gap: 10px;
+    padding: 20px;
+  }
+  @media (max-width: 768px) {
+    .parent {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 4px;
+        padding: 0;
+        margin: 0;
+    }
+  
+  /* Left Sidebar */
+  .div2 {
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Right Sidebar */
+  .div4 {
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Main Content (Posts) */
+  .div5 {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+}
+  
   .post-list {
-    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
   }
   </style>
   
