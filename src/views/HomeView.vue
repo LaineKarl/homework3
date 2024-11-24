@@ -14,7 +14,11 @@
       <!-- Main Content (Blog Posts) -->
       <div class="div5">
         <div class="post-list">
-          <BlogPost v-for="post in posts" :key="post.id" :post="post" />
+          <BlogPost 
+          v-for="post in posts" 
+          :key="post.id" 
+          :post="post" 
+          ref="blogPosts" />
         </div>
       </div>
 
@@ -23,6 +27,12 @@
         <p></p>
       </div>
     </div>
+
+    <!-- Reset Likes Button -->
+    <div class="reset-container">
+      <button @click="resetLikes" class="reset-button">Reset All Likes</button>
+    </div>
+
     <AppFooter />
   </div>
 </template>
@@ -31,6 +41,7 @@
 import AppHeader from "@/components/AppHeader.vue";
 import AppFooter from "@/components/AppFooter.vue";
 import BlogPost from "@/components/BlogPost.vue";
+import { ref } from 'vue';
 
 export default {
   name: "HomeView",
@@ -47,6 +58,12 @@ export default {
   mounted() {
     this.fetchPosts();
   },
+  setup() {
+    // Define a reactive reference to track the blog post instances
+    const blogPostRefs = ref([]);
+    return { blogPostRefs };
+  },
+
   methods: {
     async fetchPosts() {
       try {
@@ -56,6 +73,15 @@ export default {
         console.error("Error fetching posts:", error);
       }
     },
+    resetLikes() {
+      if (Array.isArray(this.$refs.blogPosts)) { // Check if refs array exists
+        this.$refs.blogPosts.forEach((blogPost) => {
+          blogPost.resetLikeCount(); // Call the method on each BlogPost instance
+        });
+      } else {
+        console.error("BlogPost refs are not properly populated.");
+      }
+    }
   },
 };
 </script>
@@ -109,5 +135,27 @@ export default {
   display: flex;
   flex-direction: column;
   gap: 20px;
+}
+
+.reset-container {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.reset-button {
+  background-color: #ff5722;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.reset-button:hover {
+  background-color: #e64a19;
 }
 </style>

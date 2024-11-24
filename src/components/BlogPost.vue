@@ -35,6 +35,9 @@
     increaseLikeCount() {
       this.likeCount++; // Increment the like count
     },
+    resetLikeCount() {
+      this.likeCount = 0; // Reset the like count to zero
+    },
   },
 };
 </script>
