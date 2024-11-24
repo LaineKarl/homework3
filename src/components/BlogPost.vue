@@ -8,20 +8,45 @@
         <img :src="post.photo" alt="Post Image" class="post-image" />
       </div>
       <p>{{ post.comment || 'No content available' }}</p>
-      <img src="/images/like2.png" alt="Like" class="like-button" />
+      <div class="like-container">
+      <img
+        src="/images/like2.png"
+        alt="Like"
+        class="like-button"
+        @click="increaseLikeCount"
+      />
+      <span class="like-counter">{{ likeCount }}</span>
     </div>
-  </template>
+  </div>
+</template>
   
-  <script>
+<script>
   export default {
     name: 'Post',
     props: {
-      post: Object, // The post object will be passed as a prop to this component
+      post: Object,
     },
-  };
-  </script>
+// initialize the like count
+  data() {
+    return {
+      likeCount: 0,
+    };
+  },
+  methods: {
+// increment the like count
+    increaseLikeCount() {
+      this.likeCount++;
+    },
+// reset the like count to zero
+    resetLikeCount() {
+      this.likeCount = 0;
+    },
+  },
+};
+</script>
   
-  <style scoped>
+<style scoped>
+
   .post {
     margin-bottom: 20px;
   }
@@ -127,6 +152,25 @@ div > p {
         grid-column: span 3 / span 3;
     } 
 }
-  
-  </style>
+
+.like-container {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.like-button {
+  width: 60px;
+  height: auto;
+  cursor: pointer;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+.like-counter {
+  font-size: 20px;
+  font-weight: bold;
+  color: #555;
+}
+</style>
   

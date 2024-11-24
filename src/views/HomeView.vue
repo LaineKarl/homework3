@@ -6,24 +6,38 @@
       </nav>
     </header>
     <div class="parent">
-      <!-- Left Sidebar -->
+      <!-- left sidebar -->
       <div class="div2">
         <p></p>
       </div>
 
-      <!-- Main Content (Blog Posts) -->
+      <!-- main content -->
       <div class="div5">
         <div class="post-list">
-          <BlogPost v-for="post in posts" :key="post.id" :post="post" />
+          <BlogPost 
+          v-for="post in posts" 
+          :key="post.id" 
+          :post="post" 
+          ref="blogPosts" />
         </div>
       </div>
 
-      <!-- Right Sidebar -->
+      <!-- right sidebar -->
       <div class="div4">
         <p></p>
       </div>
     </div>
+<<<<<<< HEAD
     
+=======
+
+    <!-- reset the likes -->
+    <div class="reset-container">
+      <button @click="resetLikes" class="reset-button">Reset All Likes</button>
+    </div>
+
+    <AppFooter />
+>>>>>>> 76345f036abef58c7b491b308cbc5ee9c2d1d76d
   </div>
   <footer>
       <AppFooter/>
@@ -34,6 +48,7 @@
 import AppHeader from "@/components/AppHeader.vue";
 import AppFooter from "@/components/AppFooter.vue";
 import BlogPost from "@/components/BlogPost.vue";
+import { ref } from 'vue';
 
 export default {
   name: "HomeView",
@@ -50,6 +65,12 @@ export default {
   mounted() {
     this.fetchPosts();
   },
+  setup() {
+// reactive reference to track the blog posts
+    const blogPostRefs = ref([]);
+    return { blogPostRefs };
+  },
+
   methods: {
     async fetchPosts() {
       try {
@@ -59,6 +80,15 @@ export default {
         console.error("Error fetching posts:", error);
       }
     },
+    resetLikes() {
+      if (Array.isArray(this.$refs.blogPosts)) {
+        this.$refs.blogPosts.forEach((blogPost) => {
+          blogPost.resetLikeCount();
+        });
+      } else {
+        console.error("BlogPost refs are not properly populated.");
+      }
+    }
   },
 };
 </script>
@@ -104,21 +134,18 @@ body {
     }
 }
 
-/* Left Sidebar */
 .div2 {
   background-color: beige;
   padding: 15px;
   
 }
 
-/* Right Sidebar */
 .div4 {
   background-color: beige;
   padding: 15px;
   
 }
 
-/* Main Content (Posts) */
 .div5 {
   background-color: #fff;
   padding: 20px;
@@ -132,6 +159,7 @@ body {
   gap: 20px;
 }
 
+<<<<<<< HEAD
 footer {
   display: flex;
   justify-content: center; /* Center the content horizontally */
@@ -142,5 +170,27 @@ footer {
   width: 100%; /* Ensure the footer spans the full page width */
   box-sizing: border-box; /* Include padding in the width calculation */
   margin: 0 auto; /* Center footer horizontally */
+=======
+.reset-container {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.reset-button {
+  background-color: #ff5722;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.reset-button:hover {
+  background-color: #e64a19;
+>>>>>>> 76345f036abef58c7b491b308cbc5ee9c2d1d76d
 }
 </style>
