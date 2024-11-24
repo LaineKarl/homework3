@@ -1,9 +1,9 @@
 <template>
   <body>
+    <AppHeader/>
     <section>
-        <AppHeader/>
-        <AppFooter/>
     </section>
+    <AppFooter/>
   </body>
 </template>
 
