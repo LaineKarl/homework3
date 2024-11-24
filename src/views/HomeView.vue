@@ -6,12 +6,12 @@
       </nav>
     </header>
     <div class="parent">
-      <!-- Left Sidebar -->
+      <!-- left sidebar -->
       <div class="div2">
         <p></p>
       </div>
 
-      <!-- Main Content (Blog Posts) -->
+      <!-- main content -->
       <div class="div5">
         <div class="post-list">
           <BlogPost 
@@ -22,13 +22,13 @@
         </div>
       </div>
 
-      <!-- Right Sidebar -->
+      <!-- right sidebar -->
       <div class="div4">
         <p></p>
       </div>
     </div>
 
-    <!-- Reset Likes Button -->
+    <!-- reset the likes -->
     <div class="reset-container">
       <button @click="resetLikes" class="reset-button">Reset All Likes</button>
     </div>
@@ -59,7 +59,7 @@ export default {
     this.fetchPosts();
   },
   setup() {
-    // Define a reactive reference to track the blog post instances
+// reactive reference to track the blog posts
     const blogPostRefs = ref([]);
     return { blogPostRefs };
   },
@@ -74,9 +74,9 @@ export default {
       }
     },
     resetLikes() {
-      if (Array.isArray(this.$refs.blogPosts)) { // Check if refs array exists
+      if (Array.isArray(this.$refs.blogPosts)) {
         this.$refs.blogPosts.forEach((blogPost) => {
-          blogPost.resetLikeCount(); // Call the method on each BlogPost instance
+          blogPost.resetLikeCount();
         });
       } else {
         console.error("BlogPost refs are not properly populated.");
@@ -107,7 +107,6 @@ export default {
     }
 }
 
-/* Left Sidebar */
 .div2 {
   background-color: #fff;
   padding: 15px;
@@ -115,7 +114,6 @@ export default {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* Right Sidebar */
 .div4 {
   background-color: #fff;
   padding: 15px;
@@ -123,7 +121,6 @@ export default {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* Main Content (Posts) */
 .div5 {
   background-color: #fff;
   padding: 20px;

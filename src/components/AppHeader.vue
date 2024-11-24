@@ -25,8 +25,8 @@ export default {
   
   header {
   display: flex;
-  justify-content: center; /* Center the content horizontally */
-  align-items: center; /* Center the content vertically */
+  justify-content: center;
+  align-items: center;
   background-color: orange;
   padding: 10px 20px;
   margin: 10px;
@@ -34,18 +34,17 @@ export default {
 }
 
 nav {
-  display: flex; /* Align links horizontally */
-  gap: 20px; /* Add spacing between links */
+  display: flex;
+  gap: 20px;
 }
 
 nav a {
   font-weight: bold;
   color: #2c3e50;
-  text-decoration: none; /* Optional: remove underlines */
+  text-decoration: none;
 }
 
 nav a.router-link-exact-active {
   color: darkorange;
 }
 </style>
-  

@@ -15,8 +15,8 @@ export default {
 footer {
 display: flex;
 padding: auto;
-  justify-content: center; /* Center the content horizontally */
-  align-items: center; /* Center the content vertically */
+  justify-content: center;
+  align-items: center;
   background-color: orange;
   padding: 10px 20px;
   margin: 10px;

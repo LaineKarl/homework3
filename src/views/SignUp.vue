@@ -23,12 +23,10 @@
   // @ is an alias to /src
 import AppFooter from '@/components/AppFooter.vue';
 import AppHeader from '@/components/AppHeader.vue';
-import HelloWorld from '@/components/HelloWorld.vue'
   
 export default {
     name: 'signup',
     components: {
-      HelloWorld,
       AppHeader,
       AppFooter
     }

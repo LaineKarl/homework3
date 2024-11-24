@@ -24,19 +24,22 @@
   export default {
     name: 'Post',
     props: {
-      post: Object, // The post object will be passed as a prop to this component
+      post: Object,
     },
+// initialize the like count
   data() {
     return {
-      likeCount: 0, // Initialize like count for this post
+      likeCount: 0,
     };
   },
   methods: {
+// increment the like count
     increaseLikeCount() {
-      this.likeCount++; // Increment the like count
+      this.likeCount++;
     },
+// reset the like count to zero
     resetLikeCount() {
-      this.likeCount = 0; // Reset the like count to zero
+      this.likeCount = 0;
     },
   },
 };
