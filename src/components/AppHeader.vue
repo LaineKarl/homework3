@@ -1,10 +1,11 @@
 <template>
     <header>
     <nav>
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+      <router-link to="/home">Home</router-link> |
+      <router-link to="/signup">Sign up</router-link>
     </nav>
     </header>
+    <router-view />
 </template>
 
 <script>

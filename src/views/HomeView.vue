@@ -1,9 +1,15 @@
 <template>
-  
+  <body>
+    <section>
+        <AppHeader/>
+        <AppFooter/>
+    </section>
+  </body>
 </template>
 
 <script>
 // @ is an alias to /src
+import AppFooter from '@/components/AppFooter.vue';
 import AppHeader from '@/components/AppHeader.vue';
 import HelloWorld from '@/components/HelloWorld.vue'
 
@@ -11,7 +17,8 @@ export default {
   name: 'HomeView',
   components: {
     HelloWorld,
-    AppHeader
+    AppHeader,
+    AppFooter
   }
 }
 </script>

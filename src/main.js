@@ -5,4 +5,4 @@ import store from './store'
 import HomeView from './views/HomeView.vue'
 import SignUp from './views/SignUp.vue'
 
-createApp(SignUp).use(store).use(router).mount('#app')
+createApp(App).use(store).use(router).mount('#app')

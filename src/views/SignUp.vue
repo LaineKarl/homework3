@@ -1,9 +1,9 @@
 <template>
     <body>
-      <AppHeader/>
+    <AppHeader/>
       <section>
           <div id="login">
-              <p>Welcome to PostIt</p>
+              <p>Welcome! </p>
               <a>Create an account</a>
               or<br>
               Please log in<br>
@@ -21,12 +21,12 @@
   
 <script>
   // @ is an alias to /src
-  import AppFooter from '@/components/AppFooter.vue';
+import AppFooter from '@/components/AppFooter.vue';
 import AppHeader from '@/components/AppHeader.vue';
-  import HelloWorld from '@/components/HelloWorld.vue'
+import HelloWorld from '@/components/HelloWorld.vue'
   
-  export default {
-    name: 'HomeView',
+export default {
+    name: 'signup',
     components: {
       HelloWorld,
       AppHeader,
