@@ -94,6 +94,22 @@
 </script>
 
 <style scoped>
+
+/* Apply a flexbox layout to the body and section */
+body, section {
+  display: flex;
+  flex-direction: column;
+  height: 100vh; /* Make the body take up the full height of the viewport */
+  margin: 0;
+}
+
+/* Main section for login container */
+section {
+  flex: 1; /* Make sure the section takes all available space */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 #login {
   display: flex;
   flex-direction: column;

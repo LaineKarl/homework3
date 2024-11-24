@@ -42,10 +42,15 @@ main {
 }
 
 footer {
-  position: absolute;
-  bottom: 0;
-  margin-bottom: 10px;
-
+  display: flex;
+  justify-content: center; /* Center content horizontally */
+  align-items: center; /* Center content vertically */
+  background-color: orange;
+  padding: 10px 20px;
+  border-radius: 15px;
+  width: 100%; /* Ensure footer spans the full width */
+  margin: 0; /* Avoid external margins affecting alignment */
+  box-sizing: border-box; /* Ensure padding is included in width */
 }
 
 nav {
