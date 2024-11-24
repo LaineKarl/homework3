@@ -27,9 +27,6 @@
         <p></p>
       </div>
     </div>
-<<<<<<< HEAD
-    
-=======
 
     <!-- reset the likes -->
     <div class="reset-container">
@@ -37,11 +34,7 @@
     </div>
 
     <AppFooter />
->>>>>>> 76345f036abef58c7b491b308cbc5ee9c2d1d76d
   </div>
-  <footer>
-      <AppFooter/>
-  </footer>
 </template>
 
 <script>
@@ -95,27 +88,7 @@ export default {
 
 <style scoped>
 
-html,
-body {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-}
-
-#app {
-  display: flex;
-  flex-direction: column; /* Stack header, main, and footer vertically */
-  min-height: 100vh; /* Ensure it spans the viewport height */
-  background-color: beige;
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
 .parent {
-  flex: 1; /* Let the main content grow to push footer down */
   display: grid;
   grid-template-columns: 1fr 3fr 1fr;
   grid-template-rows: auto;
@@ -159,18 +132,6 @@ body {
   gap: 20px;
 }
 
-<<<<<<< HEAD
-footer {
-  display: flex;
-  justify-content: center; /* Center the content horizontally */
-  align-items: center; /* Center the content vertically */
-  background-color: orange;
-  padding: 10px 20px;
-  border-radius: 15px;
-  width: 100%; /* Ensure the footer spans the full page width */
-  box-sizing: border-box; /* Include padding in the width calculation */
-  margin: 0 auto; /* Center footer horizontally */
-=======
 .reset-container {
   display: flex;
   justify-content: center;
@@ -191,6 +152,5 @@ footer {
 
 .reset-button:hover {
   background-color: #e64a19;
->>>>>>> 76345f036abef58c7b491b308cbc5ee9c2d1d76d
 }
 </style>
