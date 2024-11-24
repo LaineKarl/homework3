@@ -1,70 +1,113 @@
 <template>
-  <body>
-    <AppHeader/>
-    <section>
-    </section>
-    <AppFooter/>
-  </body>
+  <div>
+    <header>
+      <nav>
+        <AppHeader />
+      </nav>
+    </header>
+    <div class="parent">
+      <!-- Left Sidebar -->
+      <div class="div2">
+        <p></p>
+      </div>
+
+      <!-- Main Content (Blog Posts) -->
+      <div class="div5">
+        <div class="post-list">
+          <BlogPost v-for="post in posts" :key="post.id" :post="post" />
+        </div>
+      </div>
+
+      <!-- Right Sidebar -->
+      <div class="div4">
+        <p></p>
+      </div>
+    </div>
+    <AppFooter />
+  </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import AppFooter from '@/components/AppFooter.vue';
-import AppHeader from '@/components/AppHeader.vue';
-import HelloWorld from '@/components/HelloWorld.vue'
+import AppHeader from "@/components/AppHeader.vue";
+import AppFooter from "@/components/AppFooter.vue";
+import BlogPost from "@/components/BlogPost.vue";
 
 export default {
-  name: 'HomeView',
+  name: "HomeView",
   components: {
-    HelloWorld,
     AppHeader,
-    AppFooter
-  }
-}
+    AppFooter,
+    BlogPost,
+  },
+  data() {
+    return {
+      posts: [],
+    };
+  },
+  mounted() {
+    this.fetchPosts();
+  },
+  methods: {
+    async fetchPosts() {
+      try {
+        const response = await fetch("/data/PostInfo.json");
+        this.posts = await response.json();
+      } catch (error) {
+        console.error("Error fetching posts:", error);
+      }
+    },
+  },
+};
 </script>
 
 <style scoped>
 
-#login {
-    display: flex;
-    flex-direction: column;
-    height: 400px;
-    width: 350px;        
-    margin: 70px auto;
-    padding-top: 20px;      
-    background-color: orange;
-    text-align: center;
-    border-radius: 10px;
-    line-height: 1.5;
+.parent {
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr;
+  grid-template-rows: auto;
+  gap: 10px;
+  padding: 20px;
+}
+@media (max-width: 768px) {
+  .parent {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 4px;
+      padding: 0;
+      margin: 0;
+  }
+  .div2, .div4, .div5 {
+        grid-column: span 3 / span 3;
+    }
 }
 
-input[type="email"],
-input[type="password"] {
-    padding: 10px; 
-    margin: 10px 0; 
+/* Left Sidebar */
+.div2 {
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-
-.loginbutton {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    padding: 10px;
-    margin-bottom: 10px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1rem;
-    width: 50%;
-    margin-top: 1rem;
+/* Right Sidebar */
+.div4 {
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.loginbutton:hover {
-    background-color: #0056b3;
+/* Main Content (Posts) */
+.div5 {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-#login a ~ a {
-    color: #007bff
+.post-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
-
-
 </style>
